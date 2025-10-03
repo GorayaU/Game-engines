@@ -14,8 +14,6 @@ public class Shoot : MonoBehaviour
             if (Physics.Raycast(ray, out hit))
             {
                 Destroy(hit.transform.gameObject);
-                
-                Debug.Log("You Win");
             }
         }
     }

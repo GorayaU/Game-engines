@@ -14,8 +14,9 @@ public class EnemyFactory : MonoBehaviour
     public void SpawnEnemy()
     {
         int randomSpawnX = Random.Range(-5, 6);
+        int randomSpawny = Random.Range(1, 6);
         
-        Vector3 spawnPos =  new Vector3(randomSpawnX, 1, 0);
+        Vector3 spawnPos =  new Vector3(randomSpawnX, randomSpawny, 0);
         GameObject enemy = Instantiate(enemyFab, spawnPos, Quaternion.identity);
 
         if (enemy.GetComponent<Enemy>() != null)
