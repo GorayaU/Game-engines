@@ -17,20 +17,9 @@ public class Move : MonoBehaviour
         {
             this.transform.Translate(Vector3.up);
         }
-        if (Input.GetKeyDown(KeyCode.LeftShift))
+        if (Input.GetKeyDown(KeyCode.S))
         {
             this.transform.Translate(Vector3.down);
         }
-        
-        Ray ray = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
-        RaycastHit hit;
-
-        if (Physics.Raycast(ray, out hit))
-        {
-            Destroy(hit.transform.gameObject);
-            Debug.DrawLine(transform.position, hit.transform.position, Color.red);
-            Debug.Log("You Win");
-        }
-        
     }
 }
