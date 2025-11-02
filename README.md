@@ -1,11 +1,11 @@
-# In-Lab Assignment 2
+# In-Lab Assignment 3
 
 
 ### Name:
 Udeyveer Goraya 100918410
 
 ### Project:
-In this game the goal is to move around and kill the enemy spheres that spawn at random locations on the grid, you can move around using the controlls  
+In this game the goal is to move around and kill the enemy cubes that spawn at random locations on the grid, you can move around using the controlls  
 A - left  
 S - Down  
 D - Right  
@@ -13,10 +13,11 @@ W - Up
 LeftMouse - Shoot
 
 ### Diagram:
-<img width="651" height="612" alt="image" src="https://github.com/user-attachments/assets/89158f90-1833-46b7-927e-f9169e588964" />
+<img width="201" height="544" alt="image" src="https://github.com/user-attachments/assets/01fe102a-a298-483b-a8db-46ed3eae013d" />
 
 ### Reflection 
-The factory spawns a enemy game object from a prefab, currenty set to a sphere with the enemy script attached to it. A factory is a good choice because it keeps the spawning logic in one script, which in return makes it easier to edit or modify the spawning system. If i had more enemy types it would make it so i could using the same system for all of them.
+The enemy spawning system uses a observer pattern, when a enemy is killed it tells the factory by sending a event notification to spawn a new one.  
+This is good because it makes it so the enemies doent need to have a direct reference to the factory, this also makes it easier to add new events on enemy death.
 
 ### References
 https://docs.unity.com/en-us  
