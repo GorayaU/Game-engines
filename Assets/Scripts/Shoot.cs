@@ -1,20 +1,23 @@
-using System;
+// Shoot.cs
 using UnityEngine;
 
 public class Shoot : MonoBehaviour
 {
+    [SerializeField] private GameObject bulletPrefab;
+    [SerializeField] private float bulletSpeed = 10f;
+
     private void Update()
     {
         if (Input.GetMouseButtonDown(0))
         {
-            
-            Ray ray = new Ray(transform.position, transform.forward);
-            RaycastHit hit;
+            GameObject bullet = Instantiate(bulletPrefab, transform.position, transform.rotation);
 
-            if (Physics.Raycast(ray, out hit))
+            if (bullet.TryGetComponent<Rigidbody>(out var rb))
             {
-                Destroy(hit.transform.gameObject);
+                rb.linearVelocity = transform.forward * bulletSpeed;
             }
+
+            GameEvents.BulletFired();
         }
     }
 }

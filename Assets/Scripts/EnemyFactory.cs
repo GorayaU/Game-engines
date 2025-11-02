@@ -1,12 +1,27 @@
-using System;
+// EnemyFactory.cs
 using UnityEngine;
 using Random = UnityEngine.Random;
 
 public class EnemyFactory : MonoBehaviour
 {
-    public GameObject enemyFab;
+    [SerializeField] private GameObject enemyFab;
+
+    private void OnEnable()
+    {
+        GameEvents.OnEnemyKilled += HandleEnemyKilled;
+    }
+
+    private void OnDisable()
+    {
+        GameEvents.OnEnemyKilled -= HandleEnemyKilled;
+    }
 
     private void Start()
+    {
+        SpawnEnemy();
+    }
+
+    private void HandleEnemyKilled(Vector3 _)
     {
         SpawnEnemy();
     }
@@ -15,13 +30,8 @@ public class EnemyFactory : MonoBehaviour
     {
         int randomSpawnX = Random.Range(-5, 6);
         int randomSpawny = Random.Range(1, 6);
-        
-        Vector3 spawnPos =  new Vector3(randomSpawnX, randomSpawny, 0);
-        GameObject enemy = Instantiate(enemyFab, spawnPos, Quaternion.identity);
 
-        if (enemy.GetComponent<Enemy>() != null)
-        {
-            enemy.GetComponent<Enemy>().factory = this;
-        }
+        Vector3 spawnPos = new Vector3(randomSpawnX, randomSpawny, 0);
+        Instantiate(enemyFab, spawnPos, Quaternion.identity);
     }
 }

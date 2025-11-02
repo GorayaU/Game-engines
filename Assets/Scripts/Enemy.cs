@@ -1,11 +1,11 @@
-using System;
+// Enemy.cs
 using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    public EnemyFactory factory;
-    private void OnDestroy()
+    public void Die()
     {
-        factory.SpawnEnemy();
+        GameEvents.EnemyKilled(transform.position);
+        Destroy(gameObject);
     }
 }
